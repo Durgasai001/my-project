@@ -1,4 +1,4 @@
-<div *ngIf="hasBankAccounts" class="redirectline"><span routerLink="/home">Home</span> <img src="../../../../assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>My Account </span> <img src="../../../../assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>Bank</span></div>
+<div *ngIf="hasBankAccounts" class="redirectline"><span routerLink="/home">Home</span> <img src="assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>My Account </span> <img src="assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>Bank</span></div>
 <h2 *ngIf="hasBankAccounts"  class="m_t_15 live_casino_title">Bank</h2>
 <div class="table-responsive">
     <table class="transaction-table" *ngIf="hasBankAccounts">
@@ -26,7 +26,7 @@
         </tbody>
     </table>
     <div class="profile-container" *ngIf="!hasBankAccounts">
-        <div class="redirectline"><span routerLink="/home">Home</span> <img src="../../../../assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>My Account </span> <img src="../../../../assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>Bank</span></div>
+        <div class="redirectline"><span routerLink="/home">Home</span> <img src="assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>My Account </span> <img src="assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>Bank</span></div>
         <h2 class="m_t_15 live_casino_title">Bank</h2>
     <!-- <div class="profile-container"> -->
         <form class="profile-form" [formGroup]="BankForm" (ngSubmit)="onFormSubmit()">

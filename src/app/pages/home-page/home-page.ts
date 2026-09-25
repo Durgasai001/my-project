@@ -206,14 +206,14 @@ export class HomePage implements AfterViewInit {
   urlTokenForgot: string | null;
   urlEventTypeForgot: string | null;
   images = [
-    { src: "../../../assets/instractions/1.jpg", alt: 'Frist' },
-    { src: "../../../assets/instractions/2.jpg", alt: 'Second' },
-    { src: "../../../assets/instractions/3.jpg", alt: 'Third' },
-    { src: "../../../assets/instractions/4.jpg", alt: 'Four' },
-    { src: "../../../assets/instractions/5.jpg", alt: 'five' },
-    { src: "../../../assets/instractions/6.jpg", alt: 'six' },
-    { src: "../../../assets/instractions/7.jpg", alt: 'seven' },
-    { src: "../../../assets/instractions/8.jpg", alt: 'Final' },
+    { src: "assets/instractions/1.jpg", alt: 'Frist' },
+    { src: "assets/instractions/2.jpg", alt: 'Second' },
+    { src: "assets/instractions/3.jpg", alt: 'Third' },
+    { src: "assets/instractions/4.jpg", alt: 'Four' },
+    { src: "assets/instractions/5.jpg", alt: 'five' },
+    { src: "assets/instractions/6.jpg", alt: 'six' },
+    { src: "assets/instractions/7.jpg", alt: 'seven' },
+    { src: "assets/instractions/8.jpg", alt: 'Final' },
   ]
   touchStartX = 0;
   touchEndX = 0;
@@ -369,24 +369,25 @@ export class HomePage implements AfterViewInit {
     this.isWindows1 = /windows nt/.test(ua);
   }
   loadAllGames() {
-    forkJoin({
-      // live: this.GameCmsService.liveCasinoGames(),
-      live: this.playerservies.torrogames(),
-      // indie: this.GameCmsService.IndieCasinoJson(),
-      hab: this.GameCmsService.getHabaneroGamesJson(),
-    }).subscribe({
+    this.GameCmsService.getHabaneroGamesJson().subscribe({
       next: (res: any) => {
-        // this.LiveCasinoGames = Array.isArray(res.live.newlivecasino) ? res.live.newlivecasino : [];
-        this.LiveCasinoGames = Array.isArray(res.live) ? res.live : [];
-        console.log(this.LiveCasinoGames)
-        // this.BallaGames = Array.isArray(res.indie?.Games) ? res.indie.Games : [];
-        this.HabenaroGames =
-          Array.isArray(res.hab) ? res.hab.slice(0, 20) : [];
+        const list = Array.isArray(res) ? res : [];
+        this.HabenaroGames = list.slice(0, 24).map((g: any) => ({
+          ...g,
+          gameName: g.gameName || g.Name || g.KeyName
+        }));
       },
-      error: (err) => {
-        console.error('Error loading games', err);
-        this.messageservice.error('Failed',
-          err)
+      error: (err: any) => {
+        console.warn('Error loading Habanero slots:', err);
+      }
+    });
+
+    this.playerservies.torrogames().subscribe({
+      next: (res: any) => {
+        this.LiveCasinoGames = Array.isArray(res) ? res : [];
+      },
+      error: (err: any) => {
+        console.warn('Error loading live casino games:', err);
       }
     });
   }

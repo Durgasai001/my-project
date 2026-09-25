@@ -246,20 +246,20 @@
     } else {
       window.addEventListener('load', dismissPreloader);
     }
-  </script>
-    const url = new URL(window.location.href);
-const referrerId = url.searchParams.get('ID');
-localStorage.setItem('Referrer',referrerId);
-const type = url.searchParams.get('type');
-  const id = url.searchParams.get('ID');
 
-  if (type) {
-    localStorage.setItem('registerType', type);
-  }
-
-  if (id) {
-    localStorage.setItem('referrerId', id);
-  }
+    try {
+      const url = new URL(window.location.href);
+      const referrerId = url.searchParams.get('ID');
+      if (referrerId) localStorage.setItem('Referrer', referrerId);
+      const type = url.searchParams.get('type');
+      const id = url.searchParams.get('ID');
+      if (type) {
+        localStorage.setItem('registerType', type);
+      }
+      if (id) {
+        localStorage.setItem('referrerId', id);
+      }
+    } catch(e) {}
   </script>
 <script type="text/javascript" defer>
 

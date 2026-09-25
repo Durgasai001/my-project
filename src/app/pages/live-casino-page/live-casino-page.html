@@ -12,7 +12,7 @@
     </ng-container>
     <div>
         <div class="redirectline" aria-label="Breadcrumb"><span routerLink="/home">Home</span> <img
-                src="../../../../assets/home_icons/arrow_right.png" alt=" " loading="lazy" aria-hidden="true" width="15"
+                src="assets/home_icons/arrow_right.png" alt=" " loading="lazy" aria-hidden="true" width="15"
                 height="15"> <span>Live Casino </span> </div>
 
         <div>
@@ -73,7 +73,7 @@
 
                     <div class="play_container">
                         <button type="button" aria-label="Play {{ game.title }}">
-                            <img src="../../../assets/home_icons/live_casino/play_icon.png" alt="" aria-hidden="true"
+                            <img src="assets/home_icons/live_casino/play_icon.png" alt="" aria-hidden="true"
                                 loading="lazy" />
                         </button>
                     </div>
@@ -83,11 +83,11 @@
             <div class="Maingame_row_live trending_scroll_container" *ngIf="ProviderName == 'vivogaming' "
                 aria-label="Ezugi live casino games">
                 <article class="Games_image_box" (click)="vivogameLaunch(game)" *ngFor="let game of torrogames  ">
-                    <img class="img_w" src="../../../assets/games/vivogaming/{{game.gameId}}_230.webp"
+                    <img class="img_w" src="assets/games/vivogaming/{{game.gameId}}_230.webp"
                         [alt]="game.title + ' live casino game'" loading="lazy" />
                     <div class="play_container">
                         <button type="button" aria-label="Play {{ game.title }}">
-                            <img src="../../../assets/home_icons/live_casino/play_icon.png" alt="" aria-hidden="true"
+                            <img src="assets/home_icons/live_casino/play_icon.png" alt="" aria-hidden="true"
                                 loading="lazy" />
                         </button>
                     </div>
@@ -107,7 +107,7 @@
 
                         <div class="play_container" aria-label="Play {{ game.title }}">
                             <button type="button">
-                                <img src="../../../assets/home_icons/live_casino/play_icon.png" alt=""
+                                <img src="assets/home_icons/live_casino/play_icon.png" alt=""
                                     aria-hidden="true" loading="lazy" />
                             </button>
                         </div>

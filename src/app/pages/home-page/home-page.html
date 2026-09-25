@@ -203,8 +203,8 @@
                     (click)="item.isMac ? macInstruction($event, 'open') : null"
                     [class.instant-card]="item.name === 'Instant_Play'">
                     <div class="platform-icon-wrap">
-                        <img class="desktopverion_img" src="../../../assets/download_icons/desktop/{{item.name}}.svg" alt="{{item.name}}">
-                        <img class="mobileverion_img" src="../../../assets/download_icons/moblie/{{item.name}}.svg" alt="{{item.name}}">
+                        <img class="desktopverion_img" src="assets/download_icons/desktop/{{item.name}}.svg" alt="{{item.name}}">
+                        <img class="mobileverion_img" src="assets/download_icons/moblie/{{item.name}}.svg" alt="{{item.name}}">
                     </div>
                     <div class="platform-card-details">
                         <span class="platform-name">{{ item.name === 'Instant_Play' ? 'Instant Web Play' : (item.name === 'ios' ? 'Apple iOS' : item.name) }}</span>
@@ -226,7 +226,7 @@
             <section class="home_grid_box" aria-labelledby="sub-main-livecasino" aria-labelledby="sub-main-games"
                 role="button" tabindex="0" (click)="navigates('/live-casino')" aria-label="Go to Live Casino">
 
-                <img src="../../../assets/home_images/livecasino.webp" alt="live-casino" loading="lazy" />
+                <img src="assets/home_images/livecasino.webp" alt="live-casino" loading="lazy" />
                 <div class="home_grid_box_content">
                     <h6 id="sub-main-livecasino"> Live Casino</h6>
                     <a class="seeall_link_">
@@ -236,7 +236,7 @@
             <!-- <section *ngIf="commonUtilSvc.hasPermission('bti')" class="home_grid_box" aria-labelledby="sub-main-sports" role="button" tabindex="0" -->
             <section class="home_grid_box" aria-labelledby="sub-main-sports" role="button" tabindex="0"
                 (click)="navigates('/sports')" aria-label="Go to sports">
-                <img src="../../../assets/home_images/sports.webp" alt="sports" loading="lazy" />
+                <img src="assets/home_images/sports.webp" alt="sports" loading="lazy" />
                 <div class="home_grid_box_content">
                     <h6 id="sub-main-sports">Sports</h6>
                     <a class="seeall_link_">
@@ -249,7 +249,7 @@
             <!-- <section *ngIf="commonUtilSvc.hasAnyPermission(['aviatrix', 'spribe'])" class="home_grid_box" aria-labelledby="sub-main-crash" role="button" tabindex="0" -->
             <section class="home_grid_box" aria-labelledby="sub-main-crash" role="button" tabindex="0"
                 (click)="navigates('/crash')" aria-label="Go to Crash">
-                <img src="../../../assets/home_images/crash.webp" alt="crash" loading="lazy" />
+                <img src="assets/home_images/crash.webp" alt="crash" loading="lazy" />
                 <div class="home_grid_box_content">
                     <h6 id="sub-main-crash">Crash</h6>
                     <a class="seeall_link_">
@@ -258,7 +258,7 @@
             </section>
             <section class="home_grid_box" aria-labelledby="sub-main-slots" role="button" tabindex="0"
                 (click)="navigates('/slots')" aria-label="Go to slots">
-                <img src="../../../assets/home_images/slots.webp" alt="" />
+                <img src="assets/home_images/slots.webp" alt="slots" loading="lazy" />
                 <div class="home_grid_box_content">
                     <h6 id="sub-main-slots">Slots</h6>
                 </div>
@@ -318,7 +318,7 @@
                             </div> -->
                         <div class="play_container" (click)="gvproviderapi(game)">
                             <button type="button" aria-label="Play icons">
-                                <img src="../../../assets/home_icons/live_casino/play_icon.png" alt="play icon"
+                                <img src="assets/home_icons/live_casino/play_icon.png" alt="play icon"
                                     loading="lazy" />
                             </button>
                             <div class="game_titles">
@@ -465,13 +465,13 @@
                         aria-label="open slot  games" (click)="habanaroGm(game.gameName, game.KeyName)">
                         <div class="shimmer" *ngIf="!loadedImages1[ game.KeyName]"></div>
 
-                        <img [src]="'../../../assets/games/habanero/' +  game.KeyName + '_149.webp'"
+                        <img [src]="'assets/games/habanero/' +  game.KeyName + '_149.webp'"
                             alt="{{game.gameName}}" loading="lazy" (load)="onImageLoad(game.KeyName)"
-                            style="aspect-ratio: 2/2;" loading="lazy" width="100%"
+                            style="aspect-ratio: 2/2;" width="100%"
                             [class.loaded]="loadedImages1[game.KeyName]" />
                         <div class="play_container">
                             <button type="button" aria-label="Play game">
-                                <img src="../../../assets/home_icons/live_casino/play_icon.png" alt="playicon"
+                                <img src="assets/home_icons/live_casino/play_icon.png" alt="playicon"
                                     aria-hidden="true" loading="lazy" />
                             </button>
                         </div>
@@ -520,13 +520,13 @@
 
                         shimmer until THAT game's image loads
                         <div class="shimmer" *ngIf="!loadedImages2[ game.gameId]"></div>
-                        <img [src]="'../../../assets/GameImgs/indiecasino/' + game.className + '.png'"
+                        <img [src]="'assets/GameImgs/indiecasino/' + game.className + '.png'"
                             alt="{{game.gameName}}" [class.loaded]="loadedImages2[game.gameId]"
                             (load)="onImageLoad(game.gameId)" loading="lazy" />
 
                         <div class="play_container">
                             <button type="button" aria-label="Play indian game">
-                                <img src="../../../assets/home_icons/live_casino/play_icon.png" alt="play icon"
+                                <img src="assets/home_icons/live_casino/play_icon.png" alt="play icon"
                                     loading="lazy" />
                             </button>
                         </div>

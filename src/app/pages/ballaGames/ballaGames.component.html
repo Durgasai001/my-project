@@ -18,7 +18,7 @@
         </button>
     </div>
     <div  > 
-        <div class="redirectline" aria-label="Breadcrumb"><span routerLink="/home">Home</span> <img src="../../../../assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>Indian Games </span>  </div>
+        <div class="redirectline" aria-label="Breadcrumb"><span routerLink="/home">Home</span> <img src="assets/home_icons/arrow_right.png" alt="rightArrow" width="15"> <span>Indian Games </span>  </div>
 
         <header>
             <h2 id="indian-games-title" class="main_heading live_casino_title">Indian Games</h2>
@@ -29,7 +29,7 @@
             <div class="Maingame_row trending_scroll_container">
 
                 <article  class="Game_box" *ngFor="let game of paginatedGames  " [title]="game.gameName">
-                    <img src="../../../assets/Balla Games/{{game.className}}.png"  [alt]="game.displayName + ' Indian game'" loading="lazy" decoding="async"/>
+                    <img src="assets/Balla Games/{{game.className}}.png"  [alt]="game.displayName + ' Indian game'" loading="lazy" decoding="async"/>
                     <div class="game_name_button">
                         <h5 class="Game_Name_head">{{game.displayName}}</h5>
                         <button type="button"          aria-label="Play {{ game.displayName }}"

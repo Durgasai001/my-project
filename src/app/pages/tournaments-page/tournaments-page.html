@@ -7,8 +7,8 @@ aria-label="Loading tournaments">
       alt="loading" loading="lazy"
     />
   </div>
-  <!-- <img src="../../../assets/giflogo.gif" alt="lodergif"> -->
-<div class="redirectline " aria-label="Breadcrumb"><span routerLink="/home">Home</span> <img src="../../../../assets/home_icons/arrow_right.png" alt="rightArrow" width="15" height="15"
+  <!-- <img src="assets/giflogo.gif" alt="lodergif"> -->
+<div class="redirectline " aria-label="Breadcrumb"><span routerLink="/home">Home</span> <img src="assets/home_icons/arrow_right.png" alt="rightArrow" width="15" height="15"
     loading="lazy"   aria-hidden="true"> <span aria-current="page">Tournaments </span>  </div>
 <h2 class="main_heading live_casino_title ">Tournaments</h2>
         <div class="mt-4 mb-4">
@@ -23,7 +23,7 @@ aria-label="Loading tournaments">
     <div *ngIf="Tournaments?.length>0">
         <article  class="main_tourn row dis_flex_mobile" *ngFor="let tourn of Tournaments | paginate: {itemsPerPage:selectnum, currentPage:p}">
             <div class="main_icon_div col-12 col-xl-4 ">
-                <img class="icon_width " src="../../../assets/logos/miniLogo.webp" alt="logo site" loading="lazy">
+                <img class="icon_width " src="assets/logos/miniLogo.webp" alt="logo site" loading="lazy">
             </div>
             <div class="col-12 col-xl-8">
                 <h4 class="marg_tb dis_flex_mobile">{{tourn.name}}</h4>

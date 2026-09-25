@@ -21,7 +21,7 @@
     <div>
 
         <nav class="redirectline" aria-label="Breadcrumb"><span routerLink="/home">Home</span> <img
-                src="../../../../assets/home_icons/arrow_right.png" alt="" aria-hidden="true" width="15"> <span>Slots
+                src="assets/home_icons/arrow_right.png" alt="" aria-hidden="true" width="15"> <span>Slots
             </span> </nav>
 
         <header>
@@ -55,7 +55,7 @@
             <div class="Maingame_row trending_scroll_container" *ngIf="ProviderName == 'habanero'">
                 <article class="Game_box" *ngFor="let game of loadedGames" [title]="game.gameName">
                     <ng-container *ngIf="game.BrandGameId">
-                        <img src="../../../assets/games/habanero/{{game.KeyName}}_230.webp"
+                        <img src="assets/games/habanero/{{game.KeyName}}_230.webp"
                             [alt]="game.gameName + ' slot game'" loading="lazy" decoding="async"
                             style="height: 100%;" />
                         <div class="game_name_button">
@@ -136,7 +136,7 @@
             </div>
             <div class="Maingame_row trending_scroll_container" *ngIf="ProviderName == 'kingmidas'">
                 <article class="Game_box" *ngFor="let game of loadedGames " [title]="game.gameName">
-                    <img src="../../../assets/GameImgs/kingmidas/{{game.gameName}}.jpg"
+                    <img src="assets/GameImgs/kingmidas/{{game.gameName}}.jpg"
                         [alt]="game.gameName + ' slot game'" loading="lazy" decoding="async" style="height: 100%;" />
                     <div class="game_name_button">
                         <h5 class="Game_Name_head">{{game.gameName}}</h5>
@@ -196,7 +196,7 @@
             </div>
             <div class="Maingame_row trending_scroll_container" *ngIf="ProviderName == 'amb'">
                 <article class="Game_box" *ngFor="let game of loadedGames " [title]="game.gameName">
-                    <img src="../../../assets/GameImgs/AMB/{{game.gameName}}.png" [alt]="game.gameName + ' slot game'"
+                    <img src="assets/GameImgs/AMB/{{game.gameName}}.png" [alt]="game.gameName + ' slot game'"
                         style="height: 100%;" loading="lazy" decoding="async" />
                     <div class="game_name_button">
                         <h5 class="Game_Name_head">{{game.gameName}}</h5>
@@ -233,7 +233,7 @@
             <div class="Maingame_row trending_scroll_container"
                 *ngIf="ProviderName == 'tomhorn' || ProviderName == 'nucleus' || ProviderName == 'betsoft' || ProviderName == 'platipus'">
                 <article class="Game_box" *ngFor="let game of loadedGames " [title]="game.gameName">
-                    <img src="../../../assets/GameImgs/vivogaming/{{ProviderName}}/{{game.gameId}}.jpg"
+                    <img src="assets/GameImgs/vivogaming/{{ProviderName}}/{{game.gameId}}.jpg"
                         [alt]="game.gameName + ' slot game'" loading="lazy" decoding="async"
                         style="object-fit: fill;" />
                     <div class="game_name_button">
@@ -247,7 +247,7 @@
 
             <div class="Maingame_row Avaitrix_row trending_scroll_container" *ngIf="ProviderName == 'aviatrix'">
                 <article class="Game_box" *ngFor="let game of loadedGames " [title]="game.gameName">
-                    <img src="../../../assets/GameImgs/crash/aviatrix.png" [alt]="game.gameName + ' slot game'"
+                    <img src="assets/GameImgs/crash/aviatrix.png" [alt]="game.gameName + ' slot game'"
                         style="height: 100%;" loading="lazy" decoding="async" />
                     <div class="game_name_button">
                         <h5 class="Game_Name_head">{{game.gameName}}</h5>

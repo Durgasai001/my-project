@@ -20,7 +20,7 @@
     <div>
 
         <div class="redirectline" aria-label="Breadcrumb"><span routerLink="/home">Home</span> <img
-                src="../../../../assets/home_icons/arrow_right.png" alt="" aria-hidden="true" width="15"> <span>Crash
+                src="assets/home_icons/arrow_right.png" alt="" aria-hidden="true" width="15"> <span>Crash
             </span> </div>
 
         <header>
@@ -31,11 +31,11 @@
         <div>
             <div class="Maingame_row trending_scroll_container">
                 <div class="Game_box" *ngFor="let game of paginatedGames  ">
-                    <img *ngIf="game.provider == 'JDB'" src="../../../assets/GameImgs/crash/{{game.imgUrl}}.png" alt=""
+                    <img *ngIf="game.provider == 'JDB'" src="assets/GameImgs/crash/{{game.imgUrl}}.png" alt=""
                         loading="lazy" decoding="async" />
-                    <img *ngIf="game.provider == 'Spribe' " src="../../../assets/GameImgs/crash/{{game.imgUrl}}.png"
+                    <img *ngIf="game.provider == 'Spribe' " src="assets/GameImgs/crash/{{game.imgUrl}}.png"
                         alt="" loading="lazy" decoding="async" />
-                    <img *ngIf="game.gameId == 'nft-aviatrix'" src="../../../assets/GameImgs/crash/aviatrix.png" alt=""
+                    <img *ngIf="game.gameId == 'nft-aviatrix'" src="assets/GameImgs/crash/aviatrix.png" alt=""
                         loading="lazy" decoding="async" />
                     <div class="game_name_button">
                         <h5 class="Game_Name_head">{{game.gameName}}</h5>

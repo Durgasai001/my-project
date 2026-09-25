@@ -1,5 +1,5 @@
-<div class="redirectline"><span routerLink="/home">Home</span> <img src="../../../../assets/home_icons/arrow_right.png"
-    alt="rightArrow" width="15"> <span>My Account </span> <img src="../../../../assets/home_icons/arrow_right.png"
+<div class="redirectline"><span routerLink="/home">Home</span> <img src="assets/home_icons/arrow_right.png"
+    alt="rightArrow" width="15"> <span>My Account </span> <img src="assets/home_icons/arrow_right.png"
     alt="rightArrow" width="15"> <span>Cashier</span></div>
 <h2 class="m_t_15 live_casino_title">Cashier</h2>
 <div *ngIf="activeAction == 'Withdrawal'">
@@ -78,7 +78,7 @@
   <div class="row" *ngIf="Depositcurrency === 'USD'">
 
     <div class="" (click)="bitcoin('343')" title="Deposit" style="cursor: pointer;">
-      <img loading="lazy" alt="Tether Coin" src="../assets/profile_imgs/Crypto.jpg" width="200">
+      <img loading="lazy" alt="Tether Coin" src="assets/profile_imgs/Crypto.jpg" width="200">
       <!-- <button class="deposit-button">{{'USD Deposit</button> -->
     </div>
 
@@ -209,7 +209,7 @@
 
             <label for="login-input-usdtAddress" class="fd"><span class="gradient-star">*</span> USDT Address
               <!-- <img loading="lazy" width="15" style="margin-bottom:-3px;"
-                  alt="Tether Coin" src="../../../assets/img/tether_coin.svg"> -->
+                  alt="Tether Coin" src="assets/img/tether_coin.svg"> -->
             </label>
             <input type="text" id="login-input-usdtAddress" formControlName="usdtAddress" placeholder="USDT Address"
               (ngModelChange)="validateAddressLive()">
@@ -584,7 +584,7 @@
       </div>
       <div class="iframe-wrapper">
         <div class="iframe-loader" *ngIf="!iframeLoaded">
-          <img src="../../../assets/siteImg/Comp_2.gif" alt="Loading..." class="loader-gif" />
+          <img src="assets/siteImg/Comp_2.gif" alt="Loading..." class="loader-gif" />
         </div>
         <iframe scrolling="yes" frameborder="0" allowfullscreen [src]="urlSafe" (load)="onIframeLoaded()"
           [class.loaded]="iframeLoaded"></iframe>
