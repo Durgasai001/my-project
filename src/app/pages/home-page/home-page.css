@@ -274,21 +274,32 @@
 .hero-slide-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #0b0c10;
+  aspect-ratio: 800 / 372;
+  background: #06070a;
   cursor: pointer;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .hero-slide-wrapper {
+    aspect-ratio: 2.15 / 1;
+  }
 }
 
 .hero-slide-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
 .hero-slide-wrapper:hover .hero-slide-img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* Glass Overlay on Slide */
@@ -297,11 +308,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 24px 22px 18px 22px;
-  background: linear-gradient(180deg, transparent 0%, rgba(11, 12, 16, 0.85) 40%, rgba(11, 12, 16, 0.98) 100%);
+  padding: 12px 18px;
+  background: linear-gradient(180deg, transparent 0%, rgba(11, 12, 16, 0.8) 100%);
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   pointer-events: none;
 }
 
@@ -352,51 +363,90 @@
 
 /* Carousel Controls */
 .hero-control-btn {
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.65);
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #ffffff;
   top: 50%;
   transform: translateY(-50%);
-  opacity: 0.85;
+  opacity: 0;
   transition: all 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(8px);
+  z-index: 6;
+}
+
+.hero-stadium-card:hover .hero-control-btn {
+  opacity: 0.9;
 }
 
 .hero-control-btn:hover {
   background: var(--primary-clr, #e11d48);
   border-color: #ffffff;
-  opacity: 1;
+  opacity: 1 !important;
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 0 16px var(--primary-clr, #e11d48);
+  box-shadow: 0 0 14px var(--primary-clr, #e11d48);
 }
 
-.hero-control-btn.prev { left: 12px; }
-.hero-control-btn.next { right: 12px; }
+.hero-control-btn.prev { left: 8px; }
+.hero-control-btn.next { right: 8px; }
 
 /* Carousel Dots */
 .hero-carousel-dots {
-  margin-bottom: 8px;
-  gap: 6px;
+  margin-bottom: 5px;
+  gap: 5px;
+  z-index: 5;
 }
 
 .hero-carousel-dots button {
-  width: 24px !important;
-  height: 4px !important;
-  border-radius: 4px !important;
-  background-color: rgba(255, 255, 255, 0.35) !important;
+  width: 16px !important;
+  height: 3px !important;
+  border-radius: 3px !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
   border: none !important;
   transition: all 0.3s ease !important;
 }
 
 .hero-carousel-dots button.active {
-  width: 42px !important;
-  background: linear-gradient(90deg, #e11d48, #f59e0b) !important;
+  width: 28px !important;
+  background: linear-gradient(90deg, #e11d48, #fbbf24) !important;
+}
+
+/* Hero Page Entrance Sequencing */
+.hero-hidden-for-popup {
+  opacity: 0;
+  visibility: hidden;
+  max-height: 100vh;
+  overflow: hidden;
+  filter: blur(8px) brightness(0.4);
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.hero-revealed-active {
+  opacity: 1;
+  visibility: visible;
+  max-height: none;
+  overflow: visible;
+  filter: blur(0px) brightness(1);
+  pointer-events: auto;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  animation: heroEntranceReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroEntranceReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== REAL-TIME JACKPOT & METRICS TICKER RIBBON ===== */
@@ -3004,9 +3054,28 @@ i.fas.fa-caret-left.active-row {
   transform: scale(1.03);
 }
 
+.promo-brand-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 100%;
+}
+
+.promo-brand-name {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
 .promo-brand-title {
   margin: 0;
-  font-size: 0.96rem;
+  font-size: 0.92rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #fbbf24;
@@ -3015,7 +3084,7 @@ i.fas.fa-caret-left.active-row {
 
 .promo-sub-title {
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: #94a3b8;
   font-weight: 500;
 }

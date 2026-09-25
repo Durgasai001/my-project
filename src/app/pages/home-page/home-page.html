@@ -10,7 +10,7 @@
         <button type="button" aria-label="close game" (click)="toggleFullScreen()"><i _ngcontent-wuc-c7=""
                 class="fas fa-expand-arrows-alt iframe_fullS_icon ml-4"></i></button>
     </div>
-    <div id="home-page">
+    <div id="home-page" [class.hero-hidden-for-popup]="!heroRevealed && showPromotion" [class.hero-revealed-active]="heroRevealed || !showPromotion">
         <!-- ===== LUXURY RAJPOKER HIGH-ROLLER HERO SECTION ===== -->
         <section class="raj-hero-stage">
             <!-- Background Ambient Glow & Card Suits Accents -->
@@ -95,7 +95,7 @@
 
                         <!-- Carousel -->
                         <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel"
-                            data-bs-interval="3500" data-bs-touch="true">
+                            data-bs-interval="3800" data-bs-touch="true">
 
                             <!-- Indicators -->
                             <div class="carousel-indicators hero-carousel-dots">
@@ -113,12 +113,12 @@
 
                                     <div class="hero-slide-wrapper">
                                         <div class="shimmer-placeholder" *ngIf="!loadedImagesmain[img.media || img.image]"></div>
-                                        <img class="d-block w-100 hero-slide-img" [src]="getBannerMedia(img)"
+                                        <img class="hero-slide-img" [src]="getBannerMedia(img)"
                                             alt="{{ img.title || 'RajPoker Banner Slide ' + (i + 1) }}" loading="eager" decoding="async"
-                                            width="1280" height="520" (load)="onImageLoadHome(img.media || img.image)">
+                                            (load)="onImageLoadHome(img.media || img.image)">
 
-                                        <!-- Luxury Overlay with Slide Perks -->
-                                        <div class="hero-slide-glass-overlay">
+                                        <!-- Luxury Overlay with Slide Perks (Only if explicit title exists) -->
+                                        <div class="hero-slide-glass-overlay" *ngIf="(img.tag || img.badge) && (img.title || img.subtitle)">
                                             <div class="slide-badge-row" *ngIf="img.tag || img.badge">
                                                 <span class="slide-tag-pill" *ngIf="img.tag">{{ img.tag }}</span>
                                                 <span class="slide-bonus-pill" *ngIf="img.badge">{{ img.badge }}</span>
@@ -562,8 +562,11 @@
             </div>
             <div class="promo-logo-row">
                 <img src="assets/logos/logo.png" alt="RajPoker Official Logo" class="promo-brand-logo" loading="eager" />
-                <h3 class="promo-brand-title" id="promo-title">INDIA'S PREMIER POKER & CASINO</h3>
-                <p class="promo-sub-title">Real-Time Texas Hold'em, Omaha & Live Dealer Tables</p>
+                <div class="promo-brand-info">
+                    <h2 class="promo-brand-name">RAJ<span class="gold-gradient-text">POKER</span></h2>
+                    <h3 class="promo-brand-title" id="promo-title">INDIA'S PREMIER ONLINE POKER &amp; CASINO</h3>
+                    <p class="promo-sub-title">Real-Time Texas Hold'em, Omaha &amp; Live Dealer Tables</p>
+                </div>
             </div>
         </div>
 

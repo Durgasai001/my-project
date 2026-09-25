@@ -40,26 +40,183 @@
     #preloader {
       position: fixed;
       inset: 0;
-      background: #000;
-      z-index: 99999;
+      background: radial-gradient(ellipse at 50% 40%, #1e091a 0%, #090a0f 70%, #040507 100%);
+      z-index: 999999;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+      overflow: hidden;
     }
 
-    #loader-video {
-      width: 280px;
-      height: 280px;
+    #preloader::before {
+      content: '';
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(225, 29, 72, 0.25) 0%, rgba(251, 191, 36, 0.15) 40%, transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+      animation: pulseAura 2.2s ease-in-out infinite alternate;
+    }
+
+    .preloader-hidden {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
+    .preloader-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      animation: splashAppear 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .preloader-logo-wrap {
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .preloader-logo {
+      width: 140px;
+      max-width: 40vw;
+      height: auto;
       object-fit: contain;
-      display: block;
+      filter: drop-shadow(0 0 25px rgba(225, 29, 72, 0.6)) drop-shadow(0 0 10px rgba(251, 191, 36, 0.45));
+    }
+
+    .preloader-title {
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      margin: 0;
+      line-height: 1.1;
+      text-transform: uppercase;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+    }
+
+    .preloader-title .gold-part {
+      background: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #d97706 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(251, 191, 36, 0.5));
+    }
+
+    .preloader-title .crimson-part {
+      background: linear-gradient(135deg, #fda4af 0%, #f43f5e 50%, #be123c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(244, 63, 94, 0.5));
+    }
+
+    .preloader-subtitle {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #cbd5e1;
+      margin-top: 6px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .preloader-suits {
+      display: flex;
+      gap: 14px;
+      font-size: 1.25rem;
+      margin-top: 10px;
+    }
+
+    .preloader-suits span {
+      animation: suitBeat 1.2s ease-in-out infinite alternate;
+    }
+    .preloader-suits .suit-spade { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.7); }
+    .preloader-suits .suit-heart { color: #f43f5e; text-shadow: 0 0 10px rgba(244, 63, 94, 0.7); animation-delay: 0.15s; }
+    .preloader-suits .suit-club { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.7); animation-delay: 0.3s; }
+    .preloader-suits .suit-diamond { color: #f43f5e; text-shadow: 0 0 10px rgba(244, 63, 94, 0.7); animation-delay: 0.45s; }
+
+    .preloader-progress-wrap {
+      width: 200px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 18px;
+      position: relative;
+    }
+
+    .preloader-bar {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #e11d48 0%, #fbbf24 100%);
+      border-radius: 999px;
+      transform: translateX(-100%);
+      animation: loadBarProgress 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .preloader-status-text {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    @keyframes loadBarProgress {
+      0% { transform: translateX(-100%); }
+      60% { transform: translateX(-20%); }
+      100% { transform: translateX(0%); }
+    }
+
+    @keyframes pulseAura {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      100% { transform: scale(1.15); opacity: 1; }
+    }
+
+    @keyframes splashAppear {
+      0% { opacity: 0; transform: translateY(14px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes suitBeat {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      100% { transform: scale(1.2); opacity: 1; }
     }
   </style>
 </head>
 
 <body>
-  <!-- 🔥 Loader FIRST -->
+  <!-- 🔥 Branded RajPoker Splash Screen (Full Name, Logo & Suits) -->
   <div id="preloader">
-    <img src="assets/giflogo.gif" loading="eager" id="loader-video" alt="logo" style="width: 280px;">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <img src="assets/logos/logo.png" class="preloader-logo" alt="RajPoker Logo" />
+      </div>
+      <h1 class="preloader-title">
+        <span class="gold-part">RAJ</span><span class="crimson-part">POKER</span>
+      </h1>
+      <p class="preloader-subtitle">INDIA'S PREMIER ONLINE POKER &amp; CASINO</p>
+      <div class="preloader-suits">
+        <span class="suit-spade">♠</span>
+        <span class="suit-heart">♥</span>
+        <span class="suit-club">♣</span>
+        <span class="suit-diamond">♦</span>
+      </div>
+      <div class="preloader-progress-wrap">
+        <div class="preloader-bar"></div>
+      </div>
+      <span class="preloader-status-text">INITIALIZING VIP TABLES...</span>
+    </div>
   </div>
   <script>
     (function() {
@@ -71,12 +228,25 @@
   </script>
   <app-root></app-root>
   <script>
-    window.addEventListener('load', () => {
-      const preloader = document.getElementById('preloader');
-      if (preloader) {
-        preloader.style.display = 'none';
-      }
-    });
+    const splashStartTime = Date.now();
+    function dismissPreloader() {
+      const elapsed = Date.now() - splashStartTime;
+      const minDuration = 1200; // Guarantee the user sees RAJPOKER full name & branding clearly
+      const delay = Math.max(0, minDuration - elapsed);
+      setTimeout(() => {
+        const p = document.getElementById('preloader');
+        if (p) {
+          p.classList.add('preloader-hidden');
+          setTimeout(() => { p.remove(); }, 600);
+        }
+      }, delay);
+    }
+    if (document.readyState === 'complete') {
+      dismissPreloader();
+    } else {
+      window.addEventListener('load', dismissPreloader);
+    }
+  </script>
     const url = new URL(window.location.href);
 const referrerId = url.searchParams.get('ID');
 localStorage.setItem('Referrer',referrerId);

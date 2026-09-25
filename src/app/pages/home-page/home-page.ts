@@ -75,7 +75,8 @@ export class HomePage implements AfterViewInit {
   activeBestgame = 1;
   eventID: any;
   leagueName: any;
-  showPromotion: boolean = false;
+  showPromotion: boolean = true;
+  heroRevealed: boolean = false;
   jackpotAmount: number = 58439210;
   private jackpotInterval: any;
 
@@ -287,11 +288,14 @@ export class HomePage implements AfterViewInit {
     this.sportsevent();
     this.url = window.location.hostname
 
-    setTimeout(() => {
-      if (this.router.url !== '/register') {
-        this.showPromotion = true;
-      }
-    }, 450);
+    if (this.router.url === '/register') {
+      this.showPromotion = false;
+      this.heroRevealed = true;
+    } else {
+      // First display RajPoker popup; hero page is revealed after interaction
+      this.showPromotion = true;
+      this.heroRevealed = false;
+    }
     this.setDownloadOrder();
   }
   setDownloadOrder() {
@@ -419,6 +423,7 @@ export class HomePage implements AfterViewInit {
 
   closePopup() {
     this.showPromotion = false;
+    this.heroRevealed = true;
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
     }, 200);
