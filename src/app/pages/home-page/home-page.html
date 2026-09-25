@@ -1,0 +1,611 @@
+<ng-template #alertHost></ng-template>
+
+<div>
+    <div *ngIf="urlSafe">
+        <div>
+            <button type="button" aria-label="close game" class="game-close-btn" (click)="subtabClose()"> X </button>
+            <iframe #gameIframe class="game-iframe" scrolling="auto" frameborder="0" allowfullscreen
+                title="Live casino game" [src]="urlSafe"></iframe>
+        </div>
+        <button type="button" aria-label="close game" (click)="toggleFullScreen()"><i _ngcontent-wuc-c7=""
+                class="fas fa-expand-arrows-alt iframe_fullS_icon ml-4"></i></button>
+    </div>
+    <div id="home-page">
+        <!-- ===== LUXURY RAJPOKER HIGH-ROLLER HERO SECTION ===== -->
+        <section class="raj-hero-stage">
+            <!-- Background Ambient Glow & Card Suits Accents -->
+            <div class="hero-ambient-glow"></div>
+            <div class="hero-suit-watermark suit-spade">♠</div>
+            <div class="hero-suit-watermark suit-heart">♥</div>
+            <div class="hero-suit-watermark suit-club">♣</div>
+            <div class="hero-suit-watermark suit-diamond">♦</div>
+
+            <div class="raj-hero-grid">
+                <!-- LEFT COLUMN: Brand Statement, High Converting Copy & CTAs -->
+                <div class="hero-copy-column">
+                    <!-- Live Status Pill -->
+                    <div class="hero-status-pill">
+                        <span class="live-pulse-dot"></span>
+                        <span class="pill-badge">OFFICIAL PLATFORM</span>
+                        <span class="pill-title">INDIA'S PREMIER ONLINE POKER & CASINO</span>
+                    </div>
+
+                    <!-- Main Dynamic Headline -->
+                    <h1 class="hero-title">
+                        MASTER THE CARDS. <br />
+                        <span class="gold-gradient-text">WIN REAL CASH.</span>
+                    </h1>
+
+                    <!-- Compelling Subtitle -->
+                    <p class="hero-description">
+                        Join India's most trusted tables for Texas Hold'em, Pot-Limit Omaha & Live Dealer Casino.
+                        Enjoy daily guaranteed prize pools, 100% certified fair RNG, and lightning-fast 60-second UPI payouts.
+                    </p>
+
+                    <!-- Primary High-Conversion CTA Buttons -->
+                    <div class="hero-action-buttons">
+                        <button type="button" class="hero-cta-btn primary-glow"
+                            (click)="playerLoggedIn ? navigates('/tournaments') : showPopUp('REGISTER')"
+                            aria-label="Play Poker Now">
+                            <span class="cta-shine"></span>
+                            <i class="fa-solid fa-play"></i>
+                            <span class="btn-text">PLAY POKER NOW</span>
+                            <span class="cta-micro-badge">REAL CASH</span>
+                        </button>
+
+                        <button type="button" class="hero-cta-btn instant-play-btn" (click)="instantPlayLink()"
+                            aria-label="Instant Web Play">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>INSTANT WEB PLAY</span>
+                        </button>
+
+                        <button type="button" class="hero-cta-btn tourney-btn" (click)="navigates('/tournaments')"
+                            aria-label="Browse Tournaments">
+                            <i class="fa-solid fa-trophy"></i>
+                            <span>TOURNAMENTS</span>
+                        </button>
+                    </div>
+
+                    <!-- Trust & Security Badges Strip -->
+                    <div class="hero-trust-strip">
+                        <div class="trust-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>100% Certified RNG</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>60s Instant UPI</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>256-Bit SSL Safe</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>18+ Responsible</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Stadium Frame Interactive Carousel -->
+                <div class="hero-visual-column">
+                    <div class="hero-stadium-card">
+                        <!-- Neon Rim Light -->
+                        <div class="stadium-glow-rim"></div>
+
+                        <!-- Carousel -->
+                        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel"
+                            data-bs-interval="3500" data-bs-touch="true">
+
+                            <!-- Indicators -->
+                            <div class="carousel-indicators hero-carousel-dots">
+                                <button *ngFor="let img of visibleImages; let i = index" type="button"
+                                    [attr.data-bs-target]="'#carouselExampleIndicators'" [attr.data-bs-slide-to]="i"
+                                    [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null"
+                                    [attr.aria-label]="'Go to slide ' + (i + 1)">
+                                </button>
+                            </div>
+
+                            <!-- Slides -->
+                            <div class="carousel-inner hero-carousel-inner">
+                                <div *ngFor="let img of visibleImages; let i = index" class="carousel-item"
+                                    [class.active]="i === 0" (click)="routerLinks(img)">
+
+                                    <div class="hero-slide-wrapper">
+                                        <div class="shimmer-placeholder" *ngIf="!loadedImagesmain[img.media || img.image]"></div>
+                                        <img class="d-block w-100 hero-slide-img" [src]="getBannerMedia(img)"
+                                            alt="{{ img.title || 'RajPoker Banner Slide ' + (i + 1) }}" loading="eager" decoding="async"
+                                            width="1280" height="520" (load)="onImageLoadHome(img.media || img.image)">
+
+                                        <!-- Luxury Overlay with Slide Perks -->
+                                        <div class="hero-slide-glass-overlay">
+                                            <div class="slide-badge-row" *ngIf="img.tag || img.badge">
+                                                <span class="slide-tag-pill" *ngIf="img.tag">{{ img.tag }}</span>
+                                                <span class="slide-bonus-pill" *ngIf="img.badge">{{ img.badge }}</span>
+                                            </div>
+                                            <h3 class="slide-headline" *ngIf="img.title">{{ img.title }}</h3>
+                                            <p class="slide-caption" *ngIf="img.subtitle">{{ img.subtitle }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <button class="carousel-control-prev hero-control-btn prev" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" aria-label="Previous slide">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button class="carousel-control-next hero-control-btn next" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next" aria-label="Next slide">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIVE JACKPOT & REAL-TIME STATS TICKER STRIP -->
+            <div class="hero-ticker-ribbon">
+                <div class="ticker-box jackpot-box">
+                    <div class="ticker-icon-circle gold-pulse">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <div class="ticker-text-group">
+                        <span class="ticker-caption">👑 MEGA POKER JACKPOT</span>
+                        <span class="ticker-number gold-number">{{ formattedJackpot }}</span>
+                    </div>
+                </div>
+
+                <div class="ticker-box">
+                    <div class="ticker-icon-circle green-pulse">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="ticker-text-group">
+                        <span class="ticker-caption">LIVE ACTIVE PLAYERS</span>
+                        <span class="ticker-number">18,450+ Online</span>
+                    </div>
+                </div>
+
+                <div class="ticker-box">
+                    <div class="ticker-icon-circle blue-pulse">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <div class="ticker-text-group">
+                        <span class="ticker-caption">INSTANT PAYOUT SPEED</span>
+                        <span class="ticker-number">Avg 48s via UPI/IMPS</span>
+                    </div>
+                </div>
+
+                <div class="ticker-box">
+                    <div class="ticker-icon-circle red-pulse">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="ticker-text-group">
+                        <span class="ticker-caption">MONTHLY PRIZE POOLS</span>
+                        <span class="ticker-number">₹ 10+ Crores GTD</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MULTI-PLATFORM DOWNLOAD COMMAND STRIP ===== -->
+        <section class="hero-platform-dock">
+            <div class="platform-dock-header">
+                <span class="dock-title"><i class="fa-solid fa-mobile-screen-button"></i> PLAY ANYWHERE, ANYTIME</span>
+                <span class="dock-subtitle">Direct Downloads & Native High-Performance Clients</span>
+            </div>
+            <div class="platform-dock-grid">
+                <a *ngFor="let item of downloadList" class="platform-card" [attr.href]="!item.isMac ? item.link : null"
+                    (click)="item.isMac ? macInstruction($event, 'open') : null"
+                    [class.instant-card]="item.name === 'Instant_Play'">
+                    <div class="platform-icon-wrap">
+                        <img class="desktopverion_img" src="../../../assets/download_icons/desktop/{{item.name}}.svg" alt="{{item.name}}">
+                        <img class="mobileverion_img" src="../../../assets/download_icons/moblie/{{item.name}}.svg" alt="{{item.name}}">
+                    </div>
+                    <div class="platform-card-details">
+                        <span class="platform-name">{{ item.name === 'Instant_Play' ? 'Instant Web Play' : (item.name === 'ios' ? 'Apple iOS' : item.name) }}</span>
+                        <span class="platform-status-badge">
+                            {{ item.name === 'Instant_Play' ? '⚡ No Install' : (item.name === 'Windows' ? '🖥️ PC Setup' : (item.name === 'Android' ? '📲 APK v3.2' : '🍏 Web App')) }}
+                        </span>
+                    </div>
+                    <div class="platform-card-action">
+                        <i class="fa-solid fa-download" *ngIf="item.name !== 'Instant_Play'"></i>
+                        <i class="fa-solid fa-arrow-right" *ngIf="item.name === 'Instant_Play'"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+
+        <div class="home_game_grid">
+            <!-- <section *ngIf="commonUtilSvc.hasAnyPermission(['evolutiongv', 'ezugigv', 'pragmaticplaylivecasino', 'vivogaming'])" class="home_grid_box" aria-labelledby="sub-main-livecasino" aria-labelledby="sub-main-games" -->
+            <section class="home_grid_box" aria-labelledby="sub-main-livecasino" aria-labelledby="sub-main-games"
+                role="button" tabindex="0" (click)="navigates('/live-casino')" aria-label="Go to Live Casino">
+
+                <img src="../../../assets/home_images/livecasino.webp" alt="live-casino" loading="lazy" />
+                <div class="home_grid_box_content">
+                    <h6 id="sub-main-livecasino"> Live Casino</h6>
+                    <a class="seeall_link_">
+                    </a>
+                </div>
+            </section>
+            <!-- <section *ngIf="commonUtilSvc.hasPermission('bti')" class="home_grid_box" aria-labelledby="sub-main-sports" role="button" tabindex="0" -->
+            <section class="home_grid_box" aria-labelledby="sub-main-sports" role="button" tabindex="0"
+                (click)="navigates('/sports')" aria-label="Go to sports">
+                <img src="../../../assets/home_images/sports.webp" alt="sports" loading="lazy" />
+                <div class="home_grid_box_content">
+                    <h6 id="sub-main-sports">Sports</h6>
+                    <a class="seeall_link_">
+                    </a>
+                </div>
+            </section>
+
+
+
+            <!-- <section *ngIf="commonUtilSvc.hasAnyPermission(['aviatrix', 'spribe'])" class="home_grid_box" aria-labelledby="sub-main-crash" role="button" tabindex="0" -->
+            <section class="home_grid_box" aria-labelledby="sub-main-crash" role="button" tabindex="0"
+                (click)="navigates('/crash')" aria-label="Go to Crash">
+                <img src="../../../assets/home_images/crash.webp" alt="crash" loading="lazy" />
+                <div class="home_grid_box_content">
+                    <h6 id="sub-main-crash">Crash</h6>
+                    <a class="seeall_link_">
+                    </a>
+                </div>
+            </section>
+            <section class="home_grid_box" aria-labelledby="sub-main-slots" role="button" tabindex="0"
+                (click)="navigates('/slots')" aria-label="Go to slots">
+                <img src="../../../assets/home_images/slots.webp" alt="" />
+                <div class="home_grid_box_content">
+                    <h6 id="sub-main-slots">Slots</h6>
+                </div>
+            </section>
+        </div>
+        <div class="home_live_casino_container">
+            <span class="flash_border"></span>
+
+        </div>
+
+
+
+
+        <!-- <section *ngIf="commonUtilSvc.hasAnyPermission(['evolutiongv','ezugigv', 'vivogaming'])" class="home_live_casino_container" aria-labelledby="live-casino-row"> -->
+        <section class="home_live_casino_container" aria-labelledby="live-casino-row">
+            <div class="trending_header  ">
+                <div class="trending_head home_live_casino_head">
+                    <h2 class="live_casino_title" id="live-casino-row" [routerLink]="['/live-casino']">LIVE CASINO</h2>
+                </div>
+                <div class="trending_controls">
+                    <button class="see_all_btn" aria-label="all navigates to live casino"
+                        (click)="navigates('/live-casino')">
+                        See All
+                    </button>
+
+                    <button class="nav_btn prev_btnLive" aria-label="prev slide" (click)="scrollLeftliveCasino()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+
+                        </svg>
+                    </button>
+
+                    <button class="nav_btn next_btnLive" aria-label="Next slide" (click)="scrollRightliveCasino()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="home_live_casino_content">
+                <!-- <div class="arrow_"></div> -->
+                <div role="button" tabindex="0" aria-label="move to right" class="sub_home_live_casino_content"
+                    #scrollContainerLiveCasino (scroll)="onScrollliveCasino()">
+                    <div class="home_live_image_box" role="button" tabindex="0" aria-label="game launch"
+                        *ngFor="let game of LiveCasinoGames; let i = index">
+                        <div class="shimmer" *ngIf="!loadedImages[game.id]"></div>
+
+                        <img *ngIf="game.provider == 'Evolution' || game.provider == 'Ezugi'"
+                            [src]="getGameImage(game, i)" style="aspect-ratio: 2/2;"
+                            [class.loaded]="loadedImages[game.id]" (load)="onImageLoad(game.id)" alt="{{game.title}}"
+                            loading="lazy" width="100%" (click)="gvproviderapi(game)" />
+                        <!-- <div *ngIf="game.provider == 'Evolution' || game.provider == 'Ezugi'" class="game_titles"> 
+                                {{ game.game_name }}
+                            </div> -->
+                        <div class="play_container" (click)="gvproviderapi(game)">
+                            <button type="button" aria-label="Play icons">
+                                <img src="../../../assets/home_icons/live_casino/play_icon.png" alt="play icon"
+                                    loading="lazy" />
+                            </button>
+                            <div class="game_titles">
+                                <h6>{{game.provider}}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- <ng-container class="sports_games_container" *ngIf="eventsRes?.length>0 && commonUtilSvc.hasPermission('bti')"> -->
+        <ng-container class="sports_games_container" *ngIf="eventsRes.length > 0">
+            <section class="trending_header" aria-labelledby="sports-title">
+                <div class="trending_head home_live_casino_head">
+                    <h2 class="live_casino_title" id="sports-title"> SPORTS BOOK</h2>
+                </div>
+                <div class="trending_controls">
+                    <button class="nav_btn sports_btn_prev" aria-label="prev slide" (click)="scrollPrev()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+
+                        </svg>
+                    </button>
+
+                    <button class="nav_btn  sports_btn_next" aria-label="Next slide" (click)="scrollNext()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+
+            <section class="position-relative" *ngIf="eventsRes.length > 0" aria-labelledby="sports-row">
+
+                <div class="sub_home_live_casino_content" role="button" tabindex="0" aria-label="sports-section"
+                    #sportsScroller (scroll)="checkOverflow()">
+                    <div class="sports_games_widget_box" *ngFor="let image of eventsRes">
+                        <div class="leag_n_Match">
+                            <p class="nameLeg">
+                                <span class="league-text" [title]="image.leagueName">{{ image.leagueName }}</span>
+                                <span class="eventTag" [ngClass]="{
+                            live: image.eventTag === 'Live',
+                            today: image.eventTag === 'Today',
+                            tomorrow: image.eventTag === 'Tomorrow',
+                            upcoming: image.eventTag === 'Upcoming'
+                          }">
+                                    {{ image.eventTag }}
+                                </span>
+                            </p>
+                            <div class="matchName_icon">
+                                <video *ngIf="image.sportName === 'Cricket'" class="gif_img" autoplay muted playsinline
+                                    preload="none" aria-label="Cricket animation">
+                                    <source src="assets/cricket.webm" type="video/webm">
+                                </video>
+                                <img width="31" height="31" loading="lazy" decoding="async"
+                                    *ngIf="image.sportName === 'American Football'" src="assets/football123.gif"
+                                    alt="football">
+                                <span style="font-size: 14px;margin: 0;">{{image.sportName}}</span>
+                            </div>
+                        </div>
+                        <div class="leagNameSportN">
+                            <span style="font-size: 13px;color: #ffffff;">{{ image?.formattedDate }}</span>
+                        </div>
+
+                        <div class="sports_home_FC_div">
+                            <div class="sports_teams">
+                                <p class="fc_names" [title]="image?.homeValuddde?.name">{{ image?.homeValuddde?.name }}
+                                </p>
+                                <span class="score" *ngIf="image.score?.homeScore">{{ image.score?.homeScore }}</span>
+                            </div>
+                            <div class="sports_teams">
+                                <p class="fc_names" [title]="image?.awayValue?.name">{{ image?.awayValue?.name }}</p>
+                                <span class="score" *ngIf=" image.score?.awayScore">{{ image.score?.awayScore }}</span>
+
+                            </div>
+                        </div>
+
+                        <div class="sports_home_ratingDiv">
+                            <div class="rating_divs" role="button" tabindex="0" aria-label="home value"
+                                *ngIf="image?.homeValuddde"
+                                (click)="tieleagId(image.homeValuddde._id, image.eventLeagId)">
+                                <div class="sports_home_assist_div">
+                                    <p>{{ image.homeValuddde.outcomeType }}</p>
+                                    <p>{{ image.homeValuddde.trueOdds }}</p>
+                                </div>
+                            </div>
+
+                            <!-- TIE / DRAW -->
+                            <div class="rating_divs" *ngIf="image?.tieValue" role="button" tabindex="0"
+                                aria-label="out value" (click)="tieleagId(image.tieValue._id, image.eventLeagId)">
+                                <div class="sports_home_assist_div">
+                                    <p>{{ image.tieValue.outcomeType }}</p>
+                                    <p>{{ image.tieValue.trueOdds }}</p>
+                                </div>
+                            </div>
+
+                            <!-- AWAY -->
+                            <div class="rating_divs" *ngIf="image?.awayValue" role="button" tabindex="0"
+                                aria-label="tie value" (click)="tieleagId(image.awayValue._id, image.eventLeagId)">
+                                <div class="sports_home_assist_div">
+                                    <p>{{ image.awayValue.outcomeType }}</p>
+                                    <p>{{ image.awayValue.trueOdds }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ng-container>
+        <section class="slots_games_container" aria-labelledby="slots-row">
+            <div class="trending_header m_b_sm">
+                <div class="trending_head home_live_casino_head">
+                    <h2 id="slots-row" class="live_casino_title" [routerLink]="['/slots']">SLOTS</h2>
+                </div>
+                <div class="trending_controls">
+                    <button class="see_all_btn" aria-label="all games slots" (click)="navigates('/slots')">
+                        See All
+                    </button>
+                    <button class="nav_btn slots_btn_prev" aria-label="Prev slide" (click)="scrollLeftSlots()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+
+                        </svg>
+                    </button>
+
+                    <button class="nav_btn slots_btn_next" (click)="scrollRightSlots()" aria-label="Next slide">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="position-relative">
+                <div class="sub_home_live_casino_content" role="button" tabindex="0" aria-label="move slots"
+                    #scrollContainerSlots (scroll)="checkSlotsOverflow()">
+                    <div class="slots_image_box" *ngFor="let game of HabenaroGames" role="button" tabindex="0"
+                        aria-label="open slot  games" (click)="habanaroGm(game.gameName, game.KeyName)">
+                        <div class="shimmer" *ngIf="!loadedImages1[ game.KeyName]"></div>
+
+                        <img [src]="'../../../assets/games/habanero/' +  game.KeyName + '_149.webp'"
+                            alt="{{game.gameName}}" loading="lazy" (load)="onImageLoad(game.KeyName)"
+                            style="aspect-ratio: 2/2;" loading="lazy" width="100%"
+                            [class.loaded]="loadedImages1[game.KeyName]" />
+                        <div class="play_container">
+                            <button type="button" aria-label="Play game">
+                                <img src="../../../assets/home_icons/live_casino/play_icon.png" alt="playicon"
+                                    aria-hidden="true" loading="lazy" />
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- <section *ngIf="commonUtilSvc.hasPermission('ballagames')" class="featured_games_container" aria-labelledby="indian games row"> -->
+        <!-- <section  class="featured_games_container" aria-labelledby="indian games row">
+            <div class="trending_header m_b_sm">
+                <div class="trending_head home_live_casino_head">
+                    <h2 class="live_casino_title" id="indian games row" [routerLink]="['/indiangames']">CRASH GAMES</h2>
+
+                </div>
+                <div class="trending_controls">
+                    <button class="see_all_btn" type="button" aria-label="see all game indian"
+                        (click)="navigates('/indiangames')">
+                        See All
+                    </button>
+
+                    <button class="nav_btn featured_btn_prev" (click)="scrollLeft()" aria-label="prev_slide">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+
+                        </svg>
+                    </button>
+
+                    <button class="nav_btn featured_btn_next" (click)="scrollRight()" aria-label="next_slide">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="position-relative">
+                <div role="button" tabindex="0" aria-label="indian games row" class="sub_home_live_casino_content"
+                    #scrollContainerFeatured (scroll)="checkFeaturedOverflow()">
+                    <div role="button" tabindex="0" aria-label="indian games launch" class="featured_image_box"
+                        *ngFor="let game of BallaGames" (click)="ballagamesLaunch(game.gameId, game.gameName)">
+
+                        shimmer until THAT game's image loads
+                        <div class="shimmer" *ngIf="!loadedImages2[ game.gameId]"></div>
+                        <img [src]="'../../../assets/GameImgs/indiecasino/' + game.className + '.png'"
+                            alt="{{game.gameName}}" [class.loaded]="loadedImages2[game.gameId]"
+                            (load)="onImageLoad(game.gameId)" loading="lazy" />
+
+                        <div class="play_container">
+                            <button type="button" aria-label="Play indian game">
+                                <img src="../../../assets/home_icons/live_casino/play_icon.png" alt="play icon"
+                                    loading="lazy" />
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section> -->
+    </div>
+
+    <div class="fd">
+        <app-testimonials></app-testimonials>
+    </div>
+</div>
+
+<!-- Official RajPoker VIP Popup Modal (First Pop After Homepage) -->
+<div class="promo-modal-backdrop" *ngIf="showPromotion" (click)="closePopup()" role="dialog" aria-modal="true" aria-labelledby="promo-title">
+    <div class="promo-modal-container" (click)="$event.stopPropagation()">
+        <!-- Close Button -->
+        <button class="promo-close-btn" (click)="closePopup()" aria-label="Close promotion popup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- Luxury Popup Header with Clear Official Logo -->
+        <div class="promo-vip-header">
+            <div class="promo-vip-badge">
+                <span class="promo-pulse-dot"></span>
+                <span>👑 OFFICIAL RAJPOKER PLATFORM</span>
+            </div>
+            <div class="promo-logo-row">
+                <img src="assets/logos/logo.png" alt="RajPoker Official Logo" class="promo-brand-logo" loading="eager" />
+                <h3 class="promo-brand-title" id="promo-title">INDIA'S PREMIER POKER & CASINO</h3>
+                <p class="promo-sub-title">Real-Time Texas Hold'em, Omaha & Live Dealer Tables</p>
+            </div>
+        </div>
+
+        <!-- Promo Banner Image Link (New High-Definition 3D Casino Visual) -->
+        <div class="promo-link" (click)="claimWelcomeBonus()" role="link" tabindex="0" title="Play Poker on RajPoker">
+            <div class="promo-img-wrapper">
+                <img src="assets/popup_banner.jpg" alt="RajPoker Official Poker & Live Tables" class="promo-img" loading="eager" />
+                <div class="promo-hover-overlay">
+                    <span class="promo-hover-tag"><i class="fa-solid fa-play"></i> Play Poker & Win Real Cash ♠️</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIP Highlights Strip (Clean - No 25k bonus, No 10l free pass) -->
+        <div class="promo-perks-strip">
+            <div class="promo-perk-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>100% Certified RNG</span>
+            </div>
+            <div class="promo-perk-item">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Instant 60s UPI</span>
+            </div>
+            <div class="promo-perk-item">
+                <i class="fa-solid fa-crown"></i>
+                <span>24/7 VIP Tables</span>
+            </div>
+        </div>
+
+        <!-- Luxury Popup Footer Actions -->
+        <div class="promo-modal-footer">
+            <button type="button" class="promo-cta-btn" (click)="claimWelcomeBonus()">
+                <i class="fa-solid fa-play"></i>
+                <span>{{ playerLoggedIn ? 'Enter Game Lobby' : 'Play Poker Now' }}</span>
+            </button>
+            <button type="button" class="promo-insta-btn" (click)="openInstagram()">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Official Instagram</span>
+            </button>
+            <button type="button" class="promo-dismiss-btn" (click)="closePopup()">
+                <span>Enter Lobby</span>
+            </button>
+        </div>
+    </div>
+</div>

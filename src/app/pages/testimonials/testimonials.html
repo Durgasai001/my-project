@@ -1,0 +1,207 @@
+<div *ngIf="false" class="testimonial-section">
+
+  <div class="section-header">
+    <h2> Endorsed by</h2>
+    <!-- <p>Trusted by thousands of players worldwide</p> -->
+  </div>
+
+  <swiper-container #testimonialSwiper class="testimonial-swiper" slides-per-view="1.15" centered-slides="true"
+    space-between="24" loop="true" speed="900" autoplay="true" autoplay-delay="2500"
+    autoplay-disable-on-interaction="false" autoplay-pause-on-mouse-enter="false" pagination="true" observer="true"
+    update-on-window-resize="true" observe-slide-children="true" observe-parents="true" breakpoints='{
+    "768": {
+      "slidesPerView": 1.5
+    },
+    "1024": {
+      "slidesPerView": 1.5
+    },
+    "1400": {
+      "slidesPerView": 2.0
+    }
+  }'>
+
+    <swiper-slide *ngFor="let item of testimonials">
+
+      <div class="testimonial-card">
+
+        <div class="top-section" (click)="onTestimonial(item)">
+
+          <img [src]="item.image" class="user-image">
+
+          <div class="user-details">
+            <h3>{{ item.name }}</h3>
+          </div>
+
+        </div>
+
+        <!-- <div class="rating">
+        ★★★★★
+      </div> -->
+
+        <div class="review-wrapper">
+
+          <p class="review" [class.expanded]="item.expanded">
+            {{ item.review }}
+          </p>
+
+          <span class="show-more" *ngIf="item.review.length > 120" (click)="toggleReview($event, item)">
+            {{ item.expanded ? 'Show Less' : 'Show More' }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </swiper-slide>
+
+  </swiper-container>
+
+  <!-- <swiper-container
+    slides-per-view="3"
+    space-between="25"
+    loop="true"
+    autoplay-delay="2500"
+    autoplay-disable-on-interaction="false"
+    pagination="true"
+    breakpoints='{
+      "0": {
+        "slidesPerView": 1
+      },
+      "768": {
+        "slidesPerView": 1
+      },
+      "1200": {
+        "slidesPerView": 1
+      }
+    }'
+    class="testimonial-swiper"
+  >
+
+    <swiper-slide *ngFor="let item of testimonials">
+
+      <div class="testimonial-card">
+
+        <div class="top-section" (click)="onTestimonial(item)">
+
+          <img [src]="item.image" class="user-image">
+
+          <div class="user-details">
+            <h3>{{ item.name }}</h3>
+            <span>{{ item.country }}</span>
+          </div>
+
+        </div>
+
+        <div class="rating">
+          ★★★★★
+        </div>
+
+        <p class="review">
+          {{ item.review }}
+        </p>
+
+      </div>
+
+    </swiper-slide>
+
+  </swiper-container> -->
+
+</div>
+
+<div class="testimonial-section">
+
+  <div class="section-header">
+    <h2 class="live_casino_title">Endorsed by</h2>
+  </div>
+
+  <div class="testimonial-slider">
+
+    <div class="testimonial-track">
+
+      <div class="testimonial-card" *ngFor="let item of testimonials">
+
+        <div class="card-inner" [class.flipped]="item.expanded">
+
+          <!-- FRONT SIDE -->
+
+          <div class="card-front">
+
+            <div class="top-section" (click)="onTestimonial(item)">
+
+              <img [src]="item.image" class="user-image">
+
+              <div class="user-details">
+                <h3>{{ item.name }}</h3>
+              </div>
+
+            </div>
+
+            <p class="review">
+              {{ item.review }}
+            </p>
+
+            <!-- <span class="show-more" (click)="toggleReview($event, item)">
+              Show More
+            </span> -->
+
+          </div>
+
+          <!-- BACK SIDE -->
+
+          <div class="card-back">
+
+            <!-- <div class="top-section" (click)="onTestimonial(item)">
+
+              <img [src]="item.image" class="user-image">
+
+              <div class="user-details">
+                <h3>{{ item.name }}</h3>
+              </div>
+
+            </div> -->
+
+            <div class="full-review">
+              {{ item.review }}
+            </div>
+
+            <!-- <span class="show-more" (click)="toggleReview($event, item)">
+              Show Less
+            </span> -->
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- <div class="testimonial-card" *ngFor="let item of testimonials">
+
+        <div class="top-section" (click)="onTestimonial(item)">
+
+          <img [src]="item.image" class="user-image">
+
+          <div class="user-details">
+            <h3>{{ item.name }}</h3>
+          </div>
+
+        </div>
+
+        <div class="review-wrapper">
+
+          <p class="review" [class.expanded]="item.expanded">
+            {{ item.review }}
+          </p>
+
+          <span class="show-more" *ngIf="item.review.length > 120" (click)="toggleReview($event, item)">
+            {{ item.expanded ? 'Show Less' : 'Show More' }}
+          </span>
+
+        </div>
+
+      </div> -->
+
+    </div>
+
+  </div>
+
+</div>

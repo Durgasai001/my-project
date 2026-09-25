@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>
+    window.global = window;
+    window.process = window.process || { env: {}, nextTick: function(fn) { setTimeout(fn, 0); } };
+  </script>
+  <meta charset="utf-8">
+  <title>Rajpoker</title>
+  <base href="/">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+        user-scalable=no, viewport-fit=cover">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+  <!-- Preload images -->
+  <link rel="preload" as="image" href="assets/login_banners/login_banner.jpg">
+  <link rel="preload" as="image" href="assets/login_banners/register_banner.jpg">
+  <link rel="preload" as="image" href="assets/login_banners/log-in.jpg">
+   <!-- <link rel="preload" as="image" href="assets/giflogo.gif"> -->
+
+  <!-- Bootstrap CSS non-blocking -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        media="print" onload="this.media='all'">
+
+  <!-- Font Awesome non-blocking -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        media="print" onload="this.media='all'">
+
+  <style>
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #loader-video {
+      width: 280px;
+      height: 280px;
+      object-fit: contain;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🔥 Loader FIRST -->
+  <div id="preloader">
+    <img src="assets/giflogo.gif" loading="eager" id="loader-video" alt="logo" style="width: 280px;">
+  </div>
+  <script>
+    (function() {
+      try {
+        var s = localStorage.getItem('rajpoker_skin');
+        if (s) document.documentElement.setAttribute('data-skin', s);
+      } catch(e) {}
+    })();
+  </script>
+  <app-root></app-root>
+  <script>
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.display = 'none';
+      }
+    });
+    const url = new URL(window.location.href);
+const referrerId = url.searchParams.get('ID');
+localStorage.setItem('Referrer',referrerId);
+const type = url.searchParams.get('type');
+  const id = url.searchParams.get('ID');
+
+  if (type) {
+    localStorage.setItem('registerType', type);
+  }
+
+  if (id) {
+    localStorage.setItem('referrerId', id);
+  }
+  </script>
+<script type="text/javascript" defer>
+
+    function getUsername(name) {
+      $crisp.push(["set", "user:nickname", [name]]);
+    };
+    if (window.location.pathname == '/logout.html') {
+      window.location.assign(window.location.origin);
+    }
+    var demoURL = window.location.href
+    let parts1 = demoURL.split("/");
+    var demo1 = parts1[parts1.length - 1];
+    if (demo1 !== "exchangeCurrencyPopup") {
+      window.$crisp = []; window.CRISP_WEBSITE_ID = "6e4451f1-c679-4c63-9521-02edd65d0829"; (function () { d = document; s = d.createElement("script"); s.src = "https://client.crisp.chat/l.js"; s.async = 1; d.getElementsByTagName("head")[0].appendChild(s); })();
+    }
+    localStorage.setItem('providerStatus', JSON.stringify({ status: true, message: "Coming soon" }));
+    localStorage.setItem('whatsAppStatus', JSON.stringify({ status: false }));
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DW0W7JGJ5F"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ gtag('config', 'G-DW0W7JGJ5F');
+</script>
+
+
+ </body>
+</html>
